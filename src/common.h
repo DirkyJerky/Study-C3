@@ -1,4 +1,5 @@
 #define println(X) std::cout << X << std::endl
+#define printnl() std::cout << std::endl
 
 #define demo_int(X) printf( #X " -> %d\n", (X) )
 const char *___ret;
