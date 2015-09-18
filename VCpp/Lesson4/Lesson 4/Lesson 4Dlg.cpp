@@ -66,10 +66,9 @@ BEGIN_MESSAGE_MAP(CLesson4Dlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDOK, &CLesson4Dlg::onHello)
 //	ON_BN_CLICKED(IDC_BUTTON1, &CLesson4Dlg::OnBnClickedButton1)
-	ON_BN_CLICKED(IDC_BUTTON2, &CLesson4Dlg::onButtonThree)
-	ON_BN_CLICKED(IDC_BUTTON1, &CLesson4Dlg::onButtonTwo)
+	ON_EN_CHANGE(IDC_EDIT1, &CLesson4Dlg::OnEnChangeEdit1)
+	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB2, &CLesson4Dlg::OnTcnSelchangeTab2)
 END_MESSAGE_MAP()
 
 
@@ -159,20 +158,20 @@ HCURSOR CLesson4Dlg::OnQueryDragIcon()
 }
 
 
-
-void CLesson4Dlg::onHello()
+void CLesson4Dlg::OnTcnSelchangeTab1(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	MessageBox("Hello from Lesson 4");
-}
-
-void CLesson4Dlg::onButtonTwo()
-{
-	MessageBox("Made on 9/18/2105");
-}
-
-void CLesson4Dlg::onButtonThree()
-{
-	MessageBox("Many buttons");
+	// TODO: Add your control notification handler code here
+	*pResult = 0;
 }
 
 
+void CLesson4Dlg::OnEnChangeEdit1()
+{
+	MessageBox("I can not believe you touched my box!");
+}
+
+
+void CLesson4Dlg::OnTcnSelchangeTab2(NMHDR *pNMHDR, LRESULT *pResult)
+{ 
+	MessageBox("You can touch the tabs though, but not the fifth one.");
+}

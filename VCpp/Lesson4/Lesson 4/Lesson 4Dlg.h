@@ -35,5 +35,8 @@ public:
 	afx_msg void onHello();
 //	afx_msg void OnBnClickedButton1();
 	afx_msg void onButtonThree();
-	afx_msg void onButtonTwo();
+	afx_msg void onButtonTwo() const;
+	afx_msg void OnTcnSelchangeTab1(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnEnChangeEdit1();
+	afx_msg void OnTcnSelchangeTab2(NMHDR *pNMHDR, LRESULT *pResult);
 };
