@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
-#include "common.h"
+#include "common.hpp"
 #define MAX_BUF 32
 
 void push(int);

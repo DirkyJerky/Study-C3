@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <stdlib.h>
-#include "common.h"
+#include "common.hpp"
 #define MAX_BUF 512
 
 int main(int argc, char *argv[]) {
