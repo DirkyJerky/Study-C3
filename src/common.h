@@ -9,3 +9,5 @@ int ___retb;
 #define demo_bool(X) ___retb = (X); printf( #X " -> %s\n", ((___retb) ? "true" : "false" ))
 
 #define demo(X) demo_int(X)
+
+#define CONSIG(X) gtk_builder_add_callback_symbol(builder , #X , G_CALLBACK(X))
