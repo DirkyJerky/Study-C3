@@ -38,7 +38,7 @@ void messageWindow(const char *message) {
                                          GTK_BUTTONS_OK,
                                          message);
 
-        gtk_window_set_title (GTK_WINDOW (dialog), "Error!");
+        gtk_window_set_title (GTK_WINDOW (dialog), "Message!");
         gtk_dialog_run (GTK_DIALOG (dialog));
         gtk_widget_destroy (dialog);
 }
