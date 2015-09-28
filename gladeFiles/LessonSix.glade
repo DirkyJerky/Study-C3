@@ -27,7 +27,7 @@
                 <property name="yalign">0.49000000953674316</property>
                 <property name="label" translatable="yes">Line _Size</property>
                 <property name="use_underline">True</property>
-                <signal name="mnemonic-activate" handler="on_label1_mnemonic_activate" swapped="no"/>
+                <property name="mnemonic_widget">spinbutton1</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -67,12 +67,12 @@
             <property name="width_request">625</property>
             <property name="height_request">625</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="events">GDK_POINTER_MOTION_MASK | GDK_STRUCTURE_MASK</property>
+            <property name="app_paintable">True</property>
+            <property name="can_focus">True</property>
+            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
             <signal name="button-press-event" handler="on_drawingarea1_button_press_event" swapped="no"/>
             <signal name="draw" handler="on_drawingarea1_draw" swapped="no"/>
             <signal name="button-release-event" handler="on_drawingarea1_button_release_event" swapped="no"/>
-            <signal name="motion-notify-event" handler="on_drawingarea1_motion_notify_event" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
