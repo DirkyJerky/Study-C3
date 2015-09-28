@@ -5,23 +5,33 @@
 #include "common.h"
 #define MAX_BUF 512
 
-static void activate (GtkApplication* app, gpointer user_data) {
-  GtkWidget *window;
-
-  window = gtk_application_window_new (app);
-  gtk_window_set_title (GTK_WINDOW (window), "Window");
-  gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
-  gtk_widget_show_all (window);
+gboolean on_%%%(GtkWidget *widget, gpointer user_data) {
+    return TRUE;
 }
 
 int main(int argc, char *argv[]) {
-  GtkApplication *app;
-  int status;
+    GtkBuilder *builder;
+    GtkWidget *window;
 
-  app = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
-  g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-  status = g_application_run (G_APPLICATION (app), argc, argv);
-  g_object_unref (app);
+    gtk_init(&argc, &argv);
 
-  return status;
+    builder = gtk_builder_new();
+
+    GError *err = NULL;
+
+    if(gtk_builder_add_from_file(builder, "gladeFiles/Lesson%%%.glade", &err) == 0) {
+        g_error(err->message);
+        return EXIT_FAILURE;
+    }
+
+    window = GTK_WIDGET(gtk_builder_get_object(builder, "window1"));
+
+    gtk_builder_connect_signals(builder, NULL);
+
+    g_object_unref(G_OBJECT(builder));
+
+    gtk_widget_show(window);
+    gtk_main();
+
+    return EXIT_SUCCESS;
 }
