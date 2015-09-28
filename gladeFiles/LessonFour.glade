@@ -3,6 +3,7 @@
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkWindow" id="baseWindow">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
     <property name="title" translatable="yes">Lesson 4</property>
     <property name="window_position">center-on-parent</property>
     <child>
