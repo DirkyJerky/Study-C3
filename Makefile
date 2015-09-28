@@ -16,7 +16,7 @@ CEXT := c
 CSOURCES := $(shell find $(SRCDIR) -type f -name p*.$(CEXT))
 COBJECTS := $(patsubst $(SRCDIR)/p%,$(BINDIR)/p%,$(CSOURCES:.$(CEXT)=.exe))
 CFLAGS := -g -Wall $(shell pkg-config --cflags gtk+-3.0)
-CLIBFLAGS := $(shell pkg-config --libs gtk+-3.0)
+CLIBFLAGS := $(shell pkg-config --libs gtk+-3.0) -rdynamic
 
 allcpp: $(CPPOBJECTS)
 	@true
