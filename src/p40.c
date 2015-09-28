@@ -8,6 +8,8 @@
 void messageWindow(const gchar*);
 void gtk_builder_add_callback_symbol(GtkBuilder*, const char*, GCallback);
 
+GtkWidget *window;
+
 void on_close_clicked(GtkWindow* window, gpointer user_data) {
     gtk_main_quit();
 }
@@ -32,7 +34,7 @@ void messageWindow(const char *message) {
         g_warning (message);
 
         /* create an error message dialog and display modally to the user */
-        dialog = gtk_message_dialog_new (NULL,
+        dialog = gtk_message_dialog_new (GTK_WINDOW(window),
                                          GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_MESSAGE_ERROR,
                                          GTK_BUTTONS_OK,
@@ -46,7 +48,6 @@ void messageWindow(const char *message) {
 
 int main(int argc, char *argv[]) {
     GtkBuilder *builder;
-    GtkWidget *window;
 
     gtk_init(&argc, &argv);
 
@@ -61,14 +62,14 @@ int main(int argc, char *argv[]) {
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "baseWindow"));
 
-    gtk_builder_add_callback_symbol(builder, "on_close_clicked", G_CALLBACK(on_close_clicked));
-    gtk_builder_add_callback_symbol(builder, "on_button1_clicked", G_CALLBACK(on_button1_clicked));
-    gtk_builder_add_callback_symbol(builder, "on_button2_clicked", G_CALLBACK(on_button2_clicked));
-    gtk_builder_add_callback_symbol(builder, "on_button3_clicked", G_CALLBACK(on_button3_clicked));
+    CONSIG(on_close_clicked);
+    CONSIG(on_button1_clicked);
+    CONSIG(on_button2_clicked);
+    CONSIG(on_button3_clicked);
     gtk_builder_connect_signals(builder, NULL);
 
     g_object_unref(G_OBJECT(builder));
-    
+
     gtk_widget_show(window);
     gtk_main();
 
