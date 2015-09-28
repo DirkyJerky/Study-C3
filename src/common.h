@@ -12,8 +12,4 @@ int ___retb;
 
 #define CONSIG(X) gtk_builder_add_callback_symbol(builder , #X , G_CALLBACK(X))
 
-#define MAKE_CALLBACK(NAME, ...) gboolean NAME ( __VA_ARGS__ , gpointer user_data);\n \
-    CONSIG(NAME);\n \
-    gboolean NAME ( __VA_ARGS__ , gpointer user_data) 
-
 void gtk_builder_add_callback_symbol(GtkBuilder*, const char*, GCallback);
