@@ -2,7 +2,7 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkWindow" id="baseWindow">
-    <property name="width_request">255</property>
+    <property name="width_request">400</property>
     <property name="height_request">400</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Lesson 4</property>
