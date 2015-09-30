@@ -1,4 +1,4 @@
-.PHONY: clean allcpp allc
+.PHONY: clean allcpp allc all
 
 CXX := g++
 SRCDIR := src
@@ -6,6 +6,7 @@ BINDIR := bin
  
 CC := gcc
  
+all: allcpp allc
 
 CPPEXT := cpp
 CPPSOURCES := $(shell find $(SRCDIR) -type f -name p*.$(CPPEXT))
