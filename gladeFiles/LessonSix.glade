@@ -8,6 +8,7 @@
   </object>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <property name="default_width">625</property>
     <property name="default_height">625</property>
     <child>
