@@ -11,7 +11,7 @@ GtkSpinButton *spinButton;
 GtkDrawingArea *dArea;
 const GdkRGBA colorRed = (GdkRGBA) { 1.0, 80.0/255.0, 80.0/255.0, 0.8 };
 const GdkRGBA colorBlue = (GdkRGBA) { 80.0/255.0, 80.0/255.0, 1.0, 0.8 };
-cairo_surface_t *backMap = NULL;
+static cairo_surface_t *backMap = NULL;
 
 gdouble redXS;
 gdouble redYS;
@@ -24,7 +24,7 @@ gboolean on_drawingarea1_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data
     cairo_set_source_surface(cr, backMap, 0, 0);
     cairo_paint(cr);
 
-    return TRUE;
+    return FALSE;
 }
 
 gboolean on_drawingarea1_button_press_event(GtkWidget *widget, GdkEvent *gEvent, gpointer user_data) {
