@@ -33,6 +33,8 @@ gboolean on_drawingarea1_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data
         cairo_line_to(cr, redXE, redYE);
         cairo_set_line_width(cr, gtk_spin_button_get_value_as_int(spinButton));
         cairo_stroke(cr);
+
+        drawRed = FALSE;
     }
     
     if(drawBlue) {
@@ -42,6 +44,8 @@ gboolean on_drawingarea1_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data
         cairo_line_to(cr, blueXE, blueYE);
         cairo_set_line_width(cr, gtk_spin_button_get_value_as_int(spinButton));
         cairo_stroke(cr);
+
+        drawBlue = FALSE;
     }
 
     return TRUE;
@@ -86,12 +90,14 @@ gboolean on_drawingarea1_button_release_event(GtkWidget *widget, GdkEvent *gEven
             redYE = event.y;
             drawRed = TRUE;
             g_debug("set red end: (%f, %f)", event.x, event.y);
+            gtk_widget_queue_draw(GTK_WIDGET(dArea));
             break;
         case 3:
             blueXE = event.x;
             blueYE = event.y;
             drawBlue = TRUE;
             g_debug("set blue end: (%f, %f)", event.x, event.y);
+            gtk_widget_queue_draw(GTK_WIDGET(dArea));
             break;
         default:
             return FALSE;
