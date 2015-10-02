@@ -18,6 +18,9 @@ gdouble redYS;
 gdouble blueXS;
 gdouble blueYS;
 
+void clear_surface(void);
+void drawLine(gdouble, gdouble, gdouble, gdouble, const GdkRGBA*);
+
 gboolean on_drawingarea1_draw(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
     g_debug("on_drawingarea1_draw");
 
@@ -53,18 +56,24 @@ gboolean on_drawingarea1_button_press_event(GtkWidget *widget, GdkEvent *gEvent,
     return TRUE;
 }
 
-void drawLine(gdouble xS, gdouble yS, gdouble xE, gdouble yE, const GdkRGBA *color) {
-    cairo_t *cr = cairo_create(backMap);
-    gdk_cairo_set_source_rgba(cr, color);
-    cairo_set_line_width(cr, (gdouble) gtk_spin_button_get_value_as_int(spinButton));
-    cairo_move_to(cr, xS, yS);
-    cairo_line_to(cr, xE, yE);
-    cairo_stroke(cr);
-    cairo_destroy(cr);
+gboolean on_drawingarea1_configure_event(GtkWidget *widget, GdkEventConfigure *event, gpointer data) {
+    g_debug("on_drawingarea1_configure_event");
+    if (backMap) {
+        cairo_surface_destroy (backMap);
+    }
 
-    g_debug("Line: (%f, %f) -> (%f, %f) Color: %s", xS, yS, xE, yE, gdk_rgba_to_string(color));
+    backMap = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+            CAIRO_CONTENT_COLOR_ALPHA,
+            gtk_widget_get_allocated_width (widget),
+            gtk_widget_get_allocated_height (widget));
 
-    //  cairo_surface_write_to_png(backMap, "image.png");
+    g_debug("backMap status: %s", cairo_status_to_string(cairo_surface_status(backMap)));
+
+    // Initialize the surface to white
+    clear_surface();
+
+    // We've handled the configure event, no need for further processing.
+    return TRUE;
 }
 
 gboolean on_drawingarea1_button_release_event(GtkWidget *widget, GdkEvent *gEvent, gpointer user_data) {
@@ -96,6 +105,32 @@ gboolean on_drawingarea1_button_release_event(GtkWidget *widget, GdkEvent *gEven
     return TRUE;
 }
 
+void clear_surface() {
+    cairo_t *cr;
+
+    cr = cairo_create (backMap);
+
+    cairo_set_source_rgb (cr, 1, 1, 1);
+    cairo_paint (cr);
+
+    cairo_destroy (cr);
+}
+
+void drawLine(gdouble xS, gdouble yS, gdouble xE, gdouble yE, const GdkRGBA *color) {
+    cairo_t *cr = cairo_create(backMap);
+    gdk_cairo_set_source_rgba(cr, color);
+    cairo_set_line_width(cr, (gdouble) gtk_spin_button_get_value_as_int(spinButton));
+    cairo_move_to(cr, xS, yS);
+    cairo_line_to(cr, xE, yE);
+    cairo_stroke(cr);
+    cairo_destroy(cr);
+
+    g_debug("Line: (%f, %f) -> (%f, %f) Color: %s", xS, yS, xE, yE, gdk_rgba_to_string(color));
+
+    //  cairo_surface_write_to_png(backMap, "image.png");
+}
+
+
 void setupBuilder() {
     GtkBuilder *builder;
     builder = gtk_builder_new();
@@ -114,13 +149,12 @@ void setupBuilder() {
 }
 
 void setupObjects() {
-    backMap = gdk_window_create_similar_image_surface(gtk_widget_get_window(GTK_WIDGET(dArea)), 
-            CAIRO_FORMAT_ARGB32,
-            gtk_widget_get_allocated_height(GTK_WIDGET(dArea)), 
-            gtk_widget_get_allocated_width(GTK_WIDGET(dArea)),
-            1);
+    //backMap = gdk_window_create_similar_image_surface(gtk_widget_get_window(GTK_WIDGET(dArea)), 
+    //        CAIRO_FORMAT_ARGB32,
+    //        gtk_widget_get_allocated_height(GTK_WIDGET(dArea)), 
+    //        gtk_widget_get_allocated_width(GTK_WIDGET(dArea)),
+    //        1);
 
-    g_debug("backMap status: %s", cairo_status_to_string(cairo_surface_status(backMap)));
 }
 
 int main(int argc, char *argv[]) {
