@@ -1,99 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkColorSelectionDialog" id="colorselectiondialog1">
+  <object class="GtkDialog" id="checkmarkDialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
-    <property name="type_hint">dialog</property>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="colorselectiondialog-vbox1">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="colorselectiondialog-action_area1">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child internal-child="ok_button">
-              <object class="GtkButton" id="colorselectiondialog-ok_button1">
-                <property name="label">_Select</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_underline">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child internal-child="cancel_button">
-              <object class="GtkButton" id="colorselectiondialog-cancel_button1">
-                <property name="label">gtk-cancel</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_underline">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child internal-child="help_button">
-              <object class="GtkButton" id="colorselectiondialog-help_button1">
-                <property name="label">gtk-help</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_underline">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">2</property>
-                <property name="secondary">True</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child internal-child="color_selection">
-          <object class="GtkColorSelection" id="colorselectiondialog-color_selection1">
-            <property name="can_focus">False</property>
-            <property name="border_width">5</property>
-            <property name="orientation">vertical</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="0">colorselectiondialog-ok_button1</action-widget>
-      <action-widget response="0">colorselectiondialog-cancel_button1</action-widget>
-      <action-widget response="0">colorselectiondialog-help_button1</action-widget>
-    </action-widgets>
-  </object>
-  <object class="GtkDialog" id="dialog1">
-    <property name="can_focus">False</property>
-    <property name="border_width">5</property>
+    <property name="type">popup</property>
     <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
     <property name="destroy_with_parent">True</property>
@@ -164,11 +75,104 @@
       <action-widget response="0">selectNo</action-widget>
     </action-widgets>
   </object>
+  <object class="GtkColorSelectionDialog" id="colorselectiondialog1">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="type">popup</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="colorselectiondialog-vbox1">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="colorselectiondialog-action_area1">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child internal-child="ok_button">
+              <object class="GtkButton" id="colorselectiondialog-ok_button1">
+                <property name="label">_Select</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child internal-child="cancel_button">
+              <object class="GtkButton" id="colorselectiondialog-cancel_button1">
+                <property name="label">gtk-cancel</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child internal-child="help_button">
+              <object class="GtkButton" id="colorselectiondialog-help_button1">
+                <property name="label">gtk-help</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">2</property>
+                <property name="secondary">True</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child internal-child="color_selection">
+          <object class="GtkColorSelection" id="colorselectiondialog-color_selection1">
+            <property name="can_focus">False</property>
+            <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">colorselectiondialog-ok_button1</action-widget>
+      <action-widget response="0">colorselectiondialog-cancel_button1</action-widget>
+      <action-widget response="0">colorselectiondialog-help_button1</action-widget>
+    </action-widgets>
+  </object>
   <object class="GtkFileChooserDialog" id="filechooserdialog1">
     <property name="width_request">600</property>
     <property name="height_request">400</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
+    <property name="type">popup</property>
     <property name="role">GtkFileChooserDialog</property>
     <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
@@ -230,6 +234,9 @@
   </object>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Lesson Eight</property>
+    <property name="window_position">center-on-parent</property>
+    <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -248,6 +255,7 @@
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
                 <property name="xalign">0.52999997138977051</property>
+                <signal name="clicked" handler="gtk_widget_show" object="filechooserdialog1" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -287,7 +295,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_checkButton_clicked" swapped="no"/>
+                <signal name="clicked" handler="gtk_widget_show" object="checkmarkDialog" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -299,6 +307,7 @@
               <object class="GtkCheckButton" id="checkbutton1">
                 <property name="label">gtk-info</property>
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">False</property>
                 <property name="use_stock">True</property>
@@ -320,12 +329,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button1">
+          <object class="GtkButton" id="colorButton">
             <property name="label">gtk-select-color</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <signal name="clicked" handler="gtk_widget_show" object="colorselectiondialog1" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
