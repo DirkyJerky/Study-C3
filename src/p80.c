@@ -16,8 +16,8 @@ void on_selectYes_clicked(GtkButton *button, gpointer data) {
     gtk_toggle_button_set_active(checkButton, TRUE);
 }
 
-void on_onFileDialogOK_clicked(GtkButton *button, gpointer data) {
-    gchar *uri = gtk_file_chooser_get_uri(GTK_FILE_CHOOSER());
+void on_fileDialogOK_clicked(GtkButton *button, gpointer data) {
+    gchar *uri = gtk_file_chooser_get_uri(GTK_FILE_CHOOSER(fileWindow));
     g_warning(uri);
     gtk_entry_set_text(fileEntry, uri);
 }
