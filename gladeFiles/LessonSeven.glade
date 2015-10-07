@@ -22,7 +22,7 @@
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Time _Interval</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">entry1</property>
+                <property name="mnemonic_widget">intervalEntry</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -31,7 +31,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="entry1">
+              <object class="GtkEntry" id="intervalEntry">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="invisible_char">●</property>
@@ -49,7 +49,7 @@
               <object class="GtkSwitch" id="timerSwitch">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <signal name="activate" handler="on_timerSwitch_activate" swapped="no"/>
+                <signal name="notify::active" handler="on_timerSwitch_active_notify" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -68,7 +68,7 @@
           <object class="GtkLabel" id="clockLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">8:53:05</property>
+            <property name="label" translatable="yes">--:--:--</property>
           </object>
           <packing>
             <property name="expand">True</property>
